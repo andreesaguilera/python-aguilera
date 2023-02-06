@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %} Clientes {% endblock %}
+{% block content %}
+<section class="section"> 
+  <h1>Clientes</h1>
+  {%if request.user.is_superuser%}
+    <div class="clientesContainer">
+      {%for el in clientes%}
+        <div class="client">      
+          <h3>{{el.nombre}} {{el.apellido}}</h3>
+
+          <p>Telefono: {{el.telefono}}</p>
+          <p>Email: {{el.email}}</p>
+          <p>Direccion: {{el.direccion}} años</p>  
+          <p>Estado: {{el.estado}} años</p>   
+          <div>
+            <!-- Editar -->
+            <a href="/clientes/edit-cliente/{{el.id}}">Editar</a>
+            <!-- Eliminar -->
+            <a href="/clientes/delete-cliente/{{el.id}}">Eliminar</a>
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>    
+    <!-- link a crear cliente -->
+    <a href="/clientes/create-cliente">Crear Cliente</a>
+
+  {% else %}
+    <h3>No tiene permiso para acceder</h3>
+  {% endif %}
+  
+</section>
+{% endblock %}
+  

@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style> @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'); </style>
+  <link type="text/css" href="{% static 'css/styles.css'%}" rel="stylesheet"/>
+  <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+  <header>    
+    <nav class="navbar">
+      <div class="navbarLinks">
+        <a href="/">INICIO</a>
+        <a href="/ventas/list-ventas/">VENTAS</a>
+        <a href="/alquileres/list-alquileres/">ALQUILERES</a>
+        {% if request.user.is_superuser %}
+          <a href="/clientes/list-clientes/">CLIENTES</a>
+        {% endif %}
+        <a href="/about/">ABOUT</a>
+      </div>
+      <div class="userNavbar" >
+        {% if request.user.is_authenticated %}
+          <a href="/users/profile/">{{request.user.username}}</a>          
+          <a href="/users/logout/">Logout</a>
+        {% else %}
+          <a href="/users/login/">Login</a>
+          <a href="/users/signup/">Signup</a>
+        {% endif %}       
+
+      </div>
+      
+    </nav> 
+    <!-- search -->   
+    <form action="/alquileres/list-alquileres/" method="get">
+      <input type="text" name="search" placeholder="Buscar en Alq.">
+      <button type="submit">Buscar</button>
+    </form>
+  </header>
+  {% block content %} 
+  {% endblock %}
+  <!--  Footer -->
+  <footer>
+    <p>©2022 INMOBILIARIA AGUILERA</p>
+  </footer>
+  
+</body>
+</html>

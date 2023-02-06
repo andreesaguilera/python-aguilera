@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %} Index {% endblock %}
+{% block content %}
+<section class="section"> 
+    
+    <div class="homeContainer">
+        <div>
+            <h1>AGUILERA INMOBILIARIA</h1>  
+        
+            <!-- {{request.user.is_authenticated}} --><!-- arroja True or False -->
+        
+            {% if request.user.is_authenticated %}  
+                <p>Visite las propiedades en Venta y/o Alquiler</p>
+                <div class="homeLinks">
+                    <a href="/alquileres/list-alquileres/">ALQUILERES</a>
+                    <a href="/ventas/list-ventas/">VENTAS</a>
+                </div>
+                
+            {% else %}
+                <h2>Bienvenido a Aguilera Inmobiliaria</h2>
+                <p>Para poder visualizar las propiedades en Venta o Alquiler debe loguearse</p>
+                <div class="homeLinks">
+                    <a href="/users/login/">Login</a>
+                    <a href="/users/signup/">Signup</a>
+                </div>
+            {% endif %} 
+        
+            {%if message %}  
+                <h2>{{ message }}</h2>  
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

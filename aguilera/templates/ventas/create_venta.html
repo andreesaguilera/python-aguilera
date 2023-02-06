@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %} Crear Propiedad {% endblock %}
+{% block content %}
+<section class="section"> 
+  {% if request.method == "GET"%}
+    <h1>CREAR PROPIEDAD</h1>
+    {%if request.user.is_superuser%}
+      <div class="formContainer">
+        <form action="" method="POST" enctype="multipart/form-data"> <!-- en acction no va nada ya qeu utiliza la misma url -->
+
+          {% csrf_token %} 
+          <legend>Crear Propiedad</legend>
+
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre de la vivienda" required>
+          </div>
+
+          <div class="form-group">
+            <label for="descripcion">Descripcion</label>
+            <input type="text" name="descripcion" id="descripcion" placeholder="descripcion de la vivienda" required>
+          </div>
+
+          <div class="form-group">
+            <label for="precio">Precio</label>
+            <input type="number" name="precio" id="precio" placeholder="Precio de la vivienda" required>
+          </div>
+
+          <div class="form-group">
+            <label for="antiguedad">Antiguedad</label>
+            <input type="text" name="antiguedad" id="antiguedad" placeholder="antiguedad de la Propiedad" required>
+          </div>
+
+          <div class="form-group">
+            <label for="credito">Apto Credito</label>
+            <!-- input with options true or false -->
+            <select name="credito" id="credito" required>
+              <option value="True">Si</option>
+              <option value="False">No</option>
+            </select>
+          </div>
+
+          <div class="form-group">        
+            <label for="imagen">Imagen</label>
+            <input type="file" name="imagen" id="imagen" required>    
+          </div>
+
+            
+          </div>
+          <div class="form-group">
+            <button type="submit" className="addBtn">CREAR</button>
+          </div>
+        </form>
+        
+      </div> 
+    {% else %}
+      <h3>No tiene permiso para acceder</h3>
+    {% endif %}
+
+  {% else %}
+
+    <h1>Propiedad Creada</h1> 
+    <a href="/ventas/list-ventas">Listado de Propiedades en venta</a> 
+      
+  {% endif %}
+</section>
+{% endblock %}

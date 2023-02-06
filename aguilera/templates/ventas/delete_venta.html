@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Cornfirmacion de Eliminar {% endblock %}
+{% block content %}
+<section class="section">   
+  {%if request.user.is_superuser%}        
+      <h2>¿Esta seguro que desea eliminar la propiedad {{venta.nombre}}?</h2>
+
+      <form action="/ventas/delete-venta/{{venta.id}}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Eliminar">
+      </form>
+
+      
+      <a href="/ventas/list-ventas">Cancelar</a>
+    {% else %}
+      <h3>No tiene permiso para acceder</h3>
+    {% endif %}
+
+    
+</section>
+{% endblock %}
+  

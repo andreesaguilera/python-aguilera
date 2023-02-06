@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %} Editar Cliente {% endblock %}
+{% block content %}
+<section class="section">
+  {% if request.method == "GET"%}
+    <h1>EDITAR CLIENTE</h1>
+    {%if request.user.is_superuser%}
+      <div class="formContainer">
+        <form action="" method="POST"> <!-- en acction no va nada ya que utiliza la misma url -->
+
+          {% csrf_token %} 
+          <legend>Ingresar datos del cliente</legend>
+
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre del cliente" value="{{cliente.nombre}}" required>
+          </div>
+
+          <div class="form-group">
+            <label for="apellido">Apllido</label>
+            <input type="text" name="apellido" id="apellido" placeholder="Apellido del cliente" value="{{cliente.apellido}}" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input type="text" name="telefono" id="telefono" placeholder="telefono del cliente" value="{{cliente.telefono}}" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">email</label>
+            <input type="text" name="email" id="email" placeholder="email del cliente" value="{{cliente.email}}" required>
+          </div>
+
+          <div class="form-group">
+            <label for="direccion">Direccion</label>
+            <input type="text" name="direccion" id="direccion" placeholder="direccion de la Propiedad" value="{{cliente.direccion}}" required>
+          </div>
+
+          <div class="form-group">
+            <label for="estado">Estado</label>
+            <input type="text" name="estado" id="estado" placeholder="estado (Activo - Inactivo)" value="{{cliente.estado}}" required>
+          </div>    
+
+            
+          </div>
+          <div class="form-group">
+            <button type="submit" className="addBtn">EDITAR</button>
+          </div>
+        </form>
+
+        <!-- Cancelar y volver -->
+        <a href="/clientes/list-clientes">CANCELAR</a> 
+        
+      </div> 
+    {%else%}
+      <h3>NO TIENE PERMISOS PARA EDITAR CLIENTES</h3>
+    {%endif%}
+
+  {% else %}
+
+    <h1>Cliente Editado</h1> 
+    <a href="/clientes/list-clientes">Listado de Clientes</a> 
+      
+  {% endif %}
+</section>
+{% endblock %}

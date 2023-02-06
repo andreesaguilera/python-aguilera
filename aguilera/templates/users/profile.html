@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} Perfil {% endblock %}
+{% block content %}
+<section class="section">
+    
+    <div class="perfilContainer">
+        <div>
+            <h1>PERFIL</h1> 
+            {%if request.user.profile.profile_picture %}
+                <img src="{{request.user.profile.profile_picture.url}}" alt="profile_picture">
+            {% else %}
+                <a href="/users/update/">Debe Actualizar el Perfil</a>
+            {% endif %}
+            <p>Nombre: {{user.first_name}}</p>
+            <p>Apellido: {{user.last_name}}</p>
+            <p>Email: {{user.email}}</p>
+            <p>Username: {{user.username}}</p> 
+            <button><a href="/users/edit/">Editar Usuario</a></button>
+            <button><a href="/users/update/">Editar Perfil</a></button>  
+        
+        </div>
+    </div>
+<section>
+{% endblock %}
+

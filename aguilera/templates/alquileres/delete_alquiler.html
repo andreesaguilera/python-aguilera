@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} Cornfirmacion de Eliminar {% endblock %}
+{% block content %}
+<section class="section">
+  {% if request.method == "GET"%}
+    <h1>Eliminar Alquiler</h1> 
+    {%if request.user.is_superuser%} 
+      <a href="/alquileres/list-alquileres">Listado de Alquileres</a>
+      <h2>¿Esta seguro que desea eliminar el alquiler {{venta.nombre}}?</h2>
+      <form action="" method="POST"> <!-- en acction no va nada ya qeu utiliza la misma url -->
+        {% csrf_token %}
+        <div class="form-group">
+          <button type="submit" className="addBtn">Eliminar</button>
+        </div>
+      </form>
+    {% else %}
+      <h3>No tiene permiso para acceder</h3>
+    {% endif %}
+
+  {% else %}
+    <h1>Alquiler Eliminado</h1>  
+    <a href="/alquileres/list-alquileres">Listado de Alquileres</a>
+  {% endif %}
+  
+</section>
+{% endblock %}
+  

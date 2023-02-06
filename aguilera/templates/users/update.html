@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} Editar Perfil {% endblock %}
+{% block content %}
+<section class="section">
+   
+  <h1>Ingresa datos</h1>
+
+  {%if message %}  
+    <h2>{{ message }}</h2>  
+  {% endif %}
+
+ 
+  {% if form %}
+  <form id="loginForm" action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %} 
+      {{ form.csrf_token }}
+      {{ form.phone.label }} {{ form.phone }}        
+      {{ form.birth_date.label }} {{ form.birth_date }}
+      {{ form.profile_picture.label }} {{ form.profile_picture }}      
+      <input class="submitBtn" type="submit" value="Editar">
+    </form>
+     
+  {% endif %}
+
+  
+</section>
+{% endblock %}
+  

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} Cornfirmacion de Eliminar {% endblock %}
+{% block content %}
+  <section class="section">
+    {%if request.user.is_superuser%}
+      <h2>¿Esta seguro que desea eliminar el cliente {{cliente.nombre}} {{cliente.apellido}}?</h2>
+      
+      <form action="/clientes/delete-cliente/{{cliente.id}}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Eliminar">
+      </form>    
+      <!-- link a crear Venta -->
+      <a href="/clientes/list-clientes">Cancelar</a>
+      
+    {% else %}
+      <h3>No tiene permiso para acceder</h3>
+    {% endif %}
+  </section>
+{% endblock %}
+  

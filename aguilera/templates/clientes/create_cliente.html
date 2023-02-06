@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %} Crear Cliente {% endblock %}
+{% block content %}
+<section class="section">
+  {% if request.method == "GET"%}
+    <h1>CREAR CLIENTE</h1>
+    {%if request.user.is_superuser%}
+      <div class="formContainer">
+        <form action="" method="POST"> <!-- en acction no va nada ya que utiliza la misma url -->
+
+          {% csrf_token %} 
+          <legend>Ingresar datos del cliente</legend>
+
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre del cliente" required>
+          </div>
+
+          <div class="form-group">
+            <label for="apellido">Apllido</label>
+            <input type="text" name="apellido" id="apellido" placeholder="Apellido del cliente" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input type="text" name="telefono" id="telefono" placeholder="telefono del cliente" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">email</label>
+            <input type="text" name="email" id="email" placeholder="email del cliente" required>
+          </div>
+
+          <div class="form-group">
+            <label for="direccion">Direccion</label>
+            <input type="text" name="direccion" id="direccion" placeholder="direccion de la Propiedad" required>
+          </div>
+
+          <div class="form-group">
+            <label for="estado">Estado</label>
+            <input type="text" name="estado" id="estado" placeholder="estado (Activo - Inactivo)" required>
+          </div>  
+            
+          </div>
+          <div class="form-group">
+            <button type="submit" className="addBtn">CREAR</button>
+          </div>
+        </form>
+        
+      </div> 
+    {% else %}
+      <h1>NO TIENES PERMISOS PARA CREAR CLIENTES</h1>
+    {% endif %}
+
+  {% else %}
+
+    <h1>Cliente Creadp</h1> 
+    <a href="/clientes/list-clientes">Listado de Clientes</a> 
+      
+  {% endif %}
+</section>
+{% endblock %}

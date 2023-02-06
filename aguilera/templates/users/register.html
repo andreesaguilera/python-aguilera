@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %} Signup {% endblock %}
+{% block content %}
+<section class="section">
+   
+  <h1>Ingresa tus datos</h1>
+
+  {%if message %}  
+    <h2>{{ message }}</h2>  
+  {% endif %}
+
+ 
+  {% if form %}
+  <form id="loginForm" action="" method="post">
+      {% csrf_token %} 
+      {{ form.csrf_token }}
+      {{ form.username.label }} {{ form.username }}
+      <p class="lastP">- Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+      {{ form.email.label }} {{ form.email }}
+      {{ form.first_name.label }} {{ form.first_name }}
+      {{ form.last_name.label }} {{ form.last_name }}
+      {{ form.password1.label }} {{ form.password1 }}
+      <p>- Your password can’t be too similar to your other personal information.</p>
+      <p>- Your password must contain at least 8 characters.</p>
+      <p>- Your password can’t be a commonly used password.</p>
+      <p class="lastP">- Your password can’t be entirely numeric.</p>
+      {{ form.password2.label }} {{ form.password2 }}
+      <input class="submitBtn" type="submit" value="Sigup">
+    </form>
+     
+  {% endif %}
+
+  
+</section>
+{% endblock %}
+  

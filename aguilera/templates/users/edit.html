@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} Editar Usuario {% endblock %}
+{% block content %}
+<section class="section"> 
+   
+  <h1>Ingresa datos</h1>
+
+  {%if message %}  
+    <h2>{{ message }}</h2>  
+  {% endif %}
+
+ 
+  {% if form %}
+  <form id="loginForm" action="" method="post">
+      {% csrf_token %} 
+      {{ form.csrf_token }}
+      {{ form.username.label }} {{ form.username }}
+      <p class="lastP">- Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>      
+      {{ form.first_name.label }} {{ form.first_name }}
+      {{ form.last_name.label }} {{ form.last_name }}      
+      <input class="submitBtn" type="submit" value="Editar">
+    </form>
+     
+  {% endif %}
+
+  
+</section>
+{% endblock %}
+  

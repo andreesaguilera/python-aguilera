@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %} Login {% endblock %}
+{% block content %}
+<section class="section"> 
+   
+  <h1>Ingresa tus datos</h1>
+
+  {%if message %}  
+    <h2>{{ message }}</h2>  
+  {% endif %}
+
+ 
+  {% if form %}
+  <form id="loginForm" action="" method="post">
+      {% csrf_token %} 
+      {{ form.csrf_token }}
+      {{ form.username.label }} {{ form.username }}
+      {{ form.password.label }} {{ form.password }}
+      <input class="submitBtn" type="submit" value="Login">
+    </form>
+  {% endif %}
+
+  
+</section>
+{% endblock %}
+  
