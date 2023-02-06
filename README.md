@@ -31,13 +31,22 @@ Pre-entrega del curso de Python en CoderHouse
     
     para instalar django
 
-6. moverse a la carpeta del proyecto ejecutando
+6. Ejecutar
+
+    ```
+    pip install pillow
+    ```
+    
+    para instalar pillow
+
+
+7. moverse a la carpeta del proyecto ejecutando
 
     ```
     cd aguilera
     ```
 
-7. Ejecutar
+8. Ejecutar
 
     ```
     python manage.py runserver
@@ -45,22 +54,37 @@ Pre-entrega del curso de Python en CoderHouse
 
     para levantar el servidor
 
-8. Abrir el navegador en la dirección http://localhost:8000/
+9. Abrir el navegador en la dirección http://localhost:8000/
     
  
 
 
 ## Uso
 
-El proyecto cuenta con tres modelos. Viviendas en venta, Viviendas en alquiler y Alquileres temporales
+El proyecto cuenta con tres modelos. Viviendas en venta, Viviendas en alquiler y Clientes
 
 Rutas: 
  - /ventas/list-ventas/ para visualizar las viviendas en venta
- - /ventas/create-venta/ para crear una vivienda en venta
+ - /ventas/create-venta/ para crear una vivienda en venta (Solo Admin)
+ - /ventas/edit-venta/:id para editar una vivienda en venta (Solo Admin) 
+ - /ventas/delet-venta/:id para eliminar una vivienda en venta (Solo Admin) 
  - /alquileres/list-alquileres/ para visualizar las viviendas en alquiler
- - /alquileres/create-alquiler/ para crear una vivienda en alquiler
- - /temporales/list-temporales/ para visualizar las viviendas en alquiler temporales
- - /temporales/create-temporal/ para crear una vivienda en alquiler temporal
+ - /alquileres/create-alquiler/ para crear una vivienda en alquiler (Solo Admin)
+ - /alquileres/edit-alquiler/:id para editar una vivienda en alquiler (Solo Admin)
+ - /alquileres/delet-alquiler/:id para eliminar una vivienda en alquiler (Solo Admin)
+ - /clientes/list-clientes/ para visualizar los clientes (Solo Admin)
+ - /clientes/edit-cliente/:id para editar un clientes (Solo Admin)
+ - /clientes/delet-cliente/:id para eliminar un clientes (Solo Admin)
+ - /users/profile para ver la vista del usuario
+ - /users/edit para editar los datos de usuario
+ - /users/update para editar los datos de perfil
+
+ Para poder ver el listado de viviendas en Alquiler o venta, es necesario estar logueado.
+ Para poder editar o eliminar las viviendas, es necesario estar logueado como administrador.
+ Para poder ver, editar y/o borrar clientes, es necesario estar logueado como administrador.
+
+ Al ingresar como administrador se abilitan los botones para acceder a editar o eliminar datos.
+ 
 
 En el buscador del Navbar se pueden buscar las viviendas en alquiler
 
